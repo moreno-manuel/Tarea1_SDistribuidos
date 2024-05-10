@@ -14,22 +14,20 @@ Los resultados del procesamiento se pueden almacenar en el mismo sistema de alma
 
 <h1>Objetivo</h1>
 
-Se buscó simular un MapReduce desde python, para contar el número de apariciones de cada palabra que aparecen en un determinado archivo. 
+Se buscó simular un MapReduce desde python, para contar el número de apariciones de cada palabra en un determinado archivo. 
 Los arcivos de entradas son PDFs (Redalyc o Wikipedia).
 Parte del objetivo es simular el MapReduce con un solo hilo y con multiples hilos.
 
 <h1>Funcionalidades </h1>
 
-La funcion principal del ejercicio es el MapReduce, dentro de los script estan definidas como dos funciones.
+La funcion principal del ejercicio es el MapReduce, dentro de los script estan definidas como dos funciones (mapper y reducer).
 los script estan desarrollado en base a un entorno virtual de python, esto quiere decir que si las librerias correspondientes 
 usadas en el ejecicio no estan previamente instaladas se generara un error. dependera del usuario si descarga las librerias 
 de manera local o virtual.
 
 
 
-<h4>Autores</h4>
-<h5>Julián López</h5>
-<h5>Manuel Moreno</h5>
+<h4>Autores</h4><h5>Julián López</h5><h5>Manuel Moreno</h5>
 
 
 
