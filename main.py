@@ -29,7 +29,7 @@ def splitlines(text, n, bandera):
 def mapper(text):
     keyval = []
     for i in text:
-        i = re.sub(r"[,\.\:]","",i)
+        i = re.sub(r"[,\.\:]", "", i)
         keyval.append([i, 1])  # Crea diccionario [palabra,1]
     return keyval
 
