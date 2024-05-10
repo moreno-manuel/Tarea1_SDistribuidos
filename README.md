@@ -1,6 +1,6 @@
 # Tarea1_SDistribuidos
 
-<em>#MAP-REDUCE</em>
+<h1>#MAP-REDUCE</h1>
 
 MapReduce es un paradigma de procesamiento de datos caracterizado por dividirse en dos fases o pasos diferenciados: Map y Reduce. 
 Estos subprocesos asociados a la tarea se ejecutan de manera distribuida, en diferentes nodos de procesamiento o esclavos. 
@@ -27,9 +27,9 @@ de manera local o virtual.
 
 
 
-<h2>Autores</h2>
-<h3>Julián López</h3>
-<h3>Manuel Moreno</h3>
+<h4>Autores</h4>
+<h5>Julián López</h5>
+<h5>Manuel Moreno</h5>
 
 
 
