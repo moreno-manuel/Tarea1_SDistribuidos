@@ -71,9 +71,9 @@ def reducer_thread(part_out1, queue):
     queue.put(sum_reduced)
 
 
-def thread_(func, list1, list2):  # crea hilos para map y reduce
+def thread_(func, list1, list2):  # Crea hilos para map y reduce
 
-    myQue1 = queue.Queue()  # objetos para manejo de informacion con hilos
+    myQue1 = queue.Queue()  # Objetos para manejo de información con hilos
     myQue2 = queue.Queue()
 
     thread1 = threading.Thread(
@@ -106,7 +106,7 @@ if __name__ == "__main__":
     nombreFile = input("Ingrese nombre del archivo\n>")
     nombreFile = nombreFile + ".pdf"
 
-    ini = time.time()  # tiempo inicio
+    ini = time.time()  # Tiempo inicio
 
     try:
         File = open(nombreFile, "rb")
@@ -138,7 +138,7 @@ if __name__ == "__main__":
 
         outPalabra = reducer[0] + reducer[1]
 
-        fin = time.time()  # tiempo final
+        fin = time.time()  # Tiempo final
 
         for i in range(0, len(outPalabra)):
             print(outPalabra[i])

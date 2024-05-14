@@ -63,7 +63,7 @@ if __name__ == "__main__":
     nombreFile = input("Ingrese nombre del archivo\n>")
     nombreFile = nombreFile + ".pdf"
 
-    ini = time.time()  # tiempo inicio
+    ini = time.time()  # Tiempo inicio
 
     try:
         File = open(nombreFile, "rb")
@@ -86,7 +86,7 @@ if __name__ == "__main__":
 
         outPalabra = reducer(sortWords)
 
-        fin = time.time()  # tiempo final
+        fin = time.time()  # Tiempo final
 
         for i in range(0, len(outPalabra)):
             print(outPalabra[i])
