@@ -59,9 +59,11 @@ def reducer(part_out1):
 
 if __name__ == "__main__":
 
-    texto = ""
-    File = open("VC.pdf", "rb")
+    nombreFile = input("Ingrese nombre del archivo\n>")
+    nombreFile = nombreFile + ".pdf"
+    File = open(nombreFile, "rb")
     data = PyPDF2.PdfReader(File)
+    texto = ""
 
     for i in range(0, len(data.pages)):
         page = data.pages[i]
