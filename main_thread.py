@@ -2,6 +2,7 @@ import PyPDF2
 import re
 import threading
 import queue
+import time
 
 
 def data_clean(text):
@@ -104,28 +105,42 @@ if __name__ == "__main__":
 
     nombreFile = input("Ingrese nombre del archivo\n>")
     nombreFile = nombreFile + ".pdf"
-    File = open(nombreFile, "rb")
-    data = PyPDF2.PdfReader(File)
-    texto = ""
-    for i in range(0, len(data.pages)):
-        page = data.pages[i]
-        texto = texto + page.extract_text()
 
-    cleanData = data_clean(texto)
+    ini = time.time()  # tiempo inicio
 
-    lineaSplits1 = splitlines(cleanData, int(len(cleanData) / 2), 1)
+    try:
+        File = open(nombreFile, "rb")
 
-    lineaSplits2 = splitlines(cleanData, int(len(cleanData) / 2), 2)
+    except FileNotFoundError:
+        print("EL ARCHIVO QUE INTENTA ABRIR NO EXISTE")
 
-    mapp = thread_(mapper_thread, lineaSplits1, lineaSplits2)
+    else:
+        data = PyPDF2.PdfReader(File)
+        texto = ""
 
-    sortPalabra = sortedlists(mapp[0], mapp[1])
+        for i in range(0, len(data.pages)):
+            page = data.pages[i]
+            texto = texto + page.extract_text()
 
-    slicePalabra = partition(sortPalabra)
+        cleanData = data_clean(texto)
 
-    reducer = thread_(reducer_thread, slicePalabra[0], slicePalabra[1])
+        lineaSplits1 = splitlines(cleanData, int(len(cleanData) / 2), 1)
 
-    outPalabra = reducer[0] + reducer[1]
+        lineaSplits2 = splitlines(cleanData, int(len(cleanData) / 2), 2)
 
-    for i in range(0, len(outPalabra)):
-        print(outPalabra[i])
+        mapp = thread_(mapper_thread, lineaSplits1, lineaSplits2)
+
+        sortPalabra = sortedlists(mapp[0], mapp[1])
+
+        slicePalabra = partition(sortPalabra)
+
+        reducer = thread_(reducer_thread, slicePalabra[0], slicePalabra[1])
+
+        outPalabra = reducer[0] + reducer[1]
+
+        fin = time.time()  # tiempo final
+
+        for i in range(0, len(outPalabra)):
+            print(outPalabra[i])
+
+        print("\nTiempo de ejecucion: ", "{0:.4f}".format(fin - ini))

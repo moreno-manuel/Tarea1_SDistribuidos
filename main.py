@@ -1,5 +1,6 @@
 import PyPDF2
 import re
+import time
 
 
 def data_clean(text):
@@ -16,14 +17,14 @@ def splitlines(text, n, bandera):
     linessplit = text.split()  # Divide las líneas en una lista
 
     if bandera == 1:
-        split1 = linessplit[
+        split = linessplit[
             0:n
         ]  # Crea la primera división con el primer número "a" de líneas en la división 1
     else:
-        split1 = linessplit[
+        split = linessplit[
             n:
-        ]  # Crea la primera división con el primer número "a" de líneas en la división 1
-    return split1
+        ]  # Crea la primera división con el primer número "a" de líneas en la división 2
+    return split
 
 
 def mapper(text):
@@ -61,20 +62,33 @@ if __name__ == "__main__":
 
     nombreFile = input("Ingrese nombre del archivo\n>")
     nombreFile = nombreFile + ".pdf"
-    File = open(nombreFile, "rb")
-    data = PyPDF2.PdfReader(File)
-    texto = ""
 
-    for i in range(0, len(data.pages)):
-        page = data.pages[i]
-        texto = texto + page.extract_text()
+    ini = time.time()  # tiempo inicio
 
-    cleanData = data_clean(texto)
-    lineaSplits1 = splitlines(cleanData, int(len(cleanData) / 2), 1)
-    lineaSplits2 = splitlines(cleanData, int(len(cleanData) / 2), 2)
-    sortWords = sortedlists(mapper(lineaSplits1), mapper(lineaSplits2))
+    try:
+        File = open(nombreFile, "rb")
 
-    re1 = reducer(sortWords)
+    except FileNotFoundError:
+        print("EL ARCHIVO QUE INTENTA ABRIR NO EXISTE")
 
-    for i in range(0, len(re1)):
-        print(re1[i])
+    else:
+        data = PyPDF2.PdfReader(File)
+        texto = ""
+
+        for i in range(0, len(data.pages)):
+            page = data.pages[i]
+            texto = texto + page.extract_text()
+
+        cleanData = data_clean(texto)
+        lineaSplits1 = splitlines(cleanData, int(len(cleanData) / 2), 1)
+        lineaSplits2 = splitlines(cleanData, int(len(cleanData) / 2), 2)
+        sortWords = sortedlists(mapper(lineaSplits1), mapper(lineaSplits2))
+
+        outPalabra = reducer(sortWords)
+
+        fin = time.time()  # tiempo final
+
+        for i in range(0, len(outPalabra)):
+            print(outPalabra[i])
+
+        print("\nTiempo de ejecucion: ", "{0:.4f}".format(fin - ini))
