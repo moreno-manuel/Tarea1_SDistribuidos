@@ -39,7 +39,7 @@ def mapper_thread(text, queue):
 
 def sortedlists(list1, list2):
     out = list1 + list2  # Concatena listas
-    out.sort(key=lambda x: x[0])  # Organiza palabras de orden alfabético
+    out.sort(key=lambda x: x[0])  # Organiza palabras en orden alfabético
     return out
 
 
