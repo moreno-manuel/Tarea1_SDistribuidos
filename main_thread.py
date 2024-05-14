@@ -50,7 +50,7 @@ def partition(sorted_list):
         if i[0] < "n":
             sort1out.append(i)  # palabras que comienzan con letras antes que n
         else:
-            sort2out.append(i)  # palabras que van desepues de n
+            sort2out.append(i)  # palabras que van desepués de n
     return sort1out, sort2out
 
 
