@@ -15,7 +15,7 @@ Los resultados del procesamiento se pueden almacenar en el mismo sistema de alma
 <h1>Objetivo</h1>
 
 Se buscó simular un MapReduce desde python, para contar el número de apariciones de cada palabra en un determinado archivo. 
-Los arcivos de entradas son PDFs (Redalyc o Wikipedia).
+Los archivos de entradas son PDFs (Redalyc o Wikipedia).
 Parte del objetivo es simular el MapReduce con un solo hilo y con multiples hilos.
 
 <h1>Funcionalidades </h1>
